@@ -5,7 +5,7 @@ module.exports = function count(s, pairs) {
   }
 
   if(s.length == 1 && s[0] == 1){
-    return eulersMulti(pairs);
+    return Eulers(N);
   }
 
   if (N > 100000000) return false;
@@ -33,10 +33,15 @@ function getOneOrZero(i, pairs) {
   }
   return 1;  
 }
-function eulersMulti(pairs) {
-  let result = 1;
-  for(let pair of pairs){
-    result *= (pair[0] - 1) ** pair[1];
-  }
-  return result;
+function Eulers(N) {
+  let result = N;
+  for (let i=2; i*i<=N; ++i)
+    if (N % i == 0) {
+        while (N % i == 0)
+            N /= i;
+        result -= result / i;
+    }
+    if (N > 1)
+    result -= result / N;
+    return result;
 }
