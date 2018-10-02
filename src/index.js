@@ -36,7 +36,7 @@ function getOneOrZero(i, pairs) {
 function eulersMulti(pairs) {
   let result = 1;
   for(let pair of pairs){
-    result *= pair[0] - 1;
+    result *= (pair[0] - 1) ** pair[1];
   }
   return result;
 }
